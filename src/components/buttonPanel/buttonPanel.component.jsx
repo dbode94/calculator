@@ -33,8 +33,6 @@ const ButtonPanel = () =>{
           break
       }
     }
-   
-
     return( 
         //use a for to generate all the button in one go.
       <div className="buttonPanel-container">
