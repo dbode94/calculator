@@ -1,0 +1,32 @@
+.buttonPanel-container{
+    // background-color: lightblue;
+    height: 80%;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.numberButton-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2%;
+    // background-color: lightcoral;
+    width: 65%;
+}
+
+.oprationButton-container{
+    // background-color: lightgreen;
+    margin: 0px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3%;
+    width: 30%;
+}
+
+.parenthesisButton-container{
+    margin: 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:3%;
+}

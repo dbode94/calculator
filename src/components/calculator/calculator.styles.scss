@@ -1,0 +1,12 @@
+.calculator-container{
+    position: absolute;
+    top: 20%;
+    left: 25%; // use a more responsive layout management
+    background-color: rgba($color: #4f4f4f, $alpha: 1.0);
+    width: 500px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    box-shadow: 5px 5px 25px black;
+}

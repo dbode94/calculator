@@ -1,0 +1,21 @@
+.calButton{
+    border-radius: 20px;
+    font-size: 2rem;
+    background-color: rgba($color: #25252567, $alpha: 1.0);
+    color: rgba($color: #89eeb6, $alpha: 1.0);
+    border: 0px;
+    
+    &:hover{
+        background-color: rgba($color: #89eeb6, $alpha: 0.3);
+    }
+
+    &.specialButton{
+        color: lightcoral;
+        font-size: 3rem;    
+        &:hover{        
+            background-color: rgba($color: lightcoral, $alpha: 0.4);
+        }
+    }
+}
+
+
