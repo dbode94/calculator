@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.7c8307b1.css",
-    "main.js": "/react-gh-pages/static/js/main.4c4ebf77.js",
-    "static/js/787.a174f9e5.chunk.js": "/react-gh-pages/static/js/787.a174f9e5.chunk.js",
-    "index.html": "/react-gh-pages/index.html",
-    "main.7c8307b1.css.map": "/react-gh-pages/static/css/main.7c8307b1.css.map",
-    "main.4c4ebf77.js.map": "/react-gh-pages/static/js/main.4c4ebf77.js.map",
-    "787.a174f9e5.chunk.js.map": "/react-gh-pages/static/js/787.a174f9e5.chunk.js.map"
+    "main.css": "/dbode94/calculator.git/static/css/main.7c8307b1.css",
+    "main.js": "/dbode94/calculator.git/static/js/main.176b63e1.js",
+    "static/js/787.a174f9e5.chunk.js": "/dbode94/calculator.git/static/js/787.a174f9e5.chunk.js",
+    "index.html": "/dbode94/calculator.git/index.html",
+    "main.7c8307b1.css.map": "/dbode94/calculator.git/static/css/main.7c8307b1.css.map",
+    "main.176b63e1.js.map": "/dbode94/calculator.git/static/js/main.176b63e1.js.map",
+    "787.a174f9e5.chunk.js.map": "/dbode94/calculator.git/static/js/787.a174f9e5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7c8307b1.css",
-    "static/js/main.4c4ebf77.js"
+    "static/js/main.176b63e1.js"
   ]
 }
