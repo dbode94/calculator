@@ -6,7 +6,7 @@ function App() {
     <div>
       <Calculator/>
       <br />
-      <p className='signatureText'>Made with ❤️ by DNIS.</p>
+      <p className='signatureText'>-Made with ❤️ by DNIS-</p>
     </div>
   );
 }
