@@ -3,7 +3,11 @@ import './App.css';
 
 function App() {
   return (
-    <Calculator/>
+    <div>
+      <Calculator/>
+      <br />
+      <p className='signatureText'>Made with ❤️ by DNIS.</p>
+    </div>
   );
 }
 
