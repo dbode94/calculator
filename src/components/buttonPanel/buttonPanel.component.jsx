@@ -48,7 +48,7 @@ const ButtonPanel = () =>{
         </div>   
         <div className="oprationButton-container">
             <Button value={'c'} key={16} buttonType={'specialButton'} onClick = {handleClick}/> 
-            <Button value={'+'} key={12} onClick = {handleClick}/>
+           
             <Button value={'-'} key={13} onClick = {handleClick}/> 
             <Button value={'*'} key={14} onClick = {handleClick}/> 
             <Button value={'/'} key={15} onClick = {handleClick}/>
