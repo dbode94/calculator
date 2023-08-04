@@ -24,6 +24,6 @@
 .parenthesisButton-container{
     margin: 0;
     display: grid;
-    grid-template-columns:repeat(2,minmax(5px,1fr));
+    grid-template-columns:repeat(2,minmax(3px,1fr));
     gap:3%;
 }
