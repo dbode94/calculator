@@ -2,7 +2,7 @@
     height: 80%;
     margin: 20px;
     display: flex;
-    // justify-content: space-between;
+    justify-content: space-between;
     padding: 3%;
 }
 
@@ -12,17 +12,16 @@
     gap: 2%;
     // background-color: lightcoral;
     width: 65%;
-    margin: 2%;
 }
 
 .oprationButton-container{
     // background-color: lightgreen;
-    margin: 3%;
+    margin: 0px;
     display: grid;
     grid-template-columns: 1fr;
     gap: 3%;
     width: 30%;
-    padding: 0px;
+   
 }
 
 .parenthesisButton-container{
@@ -30,5 +29,4 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap:3%;
-    padding: 0px;
 }
