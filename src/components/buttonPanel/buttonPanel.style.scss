@@ -1,6 +1,6 @@
 .buttonPanel-container{
     height: 80%;
-    margin: 20px;
+    margin: 0;
     display: flex;
     justify-content: space-between;
     padding: 3%;
@@ -16,7 +16,7 @@
 
 .oprationButton-container{
     // background-color: lightgreen;
-    margin: 0px;
+    margin: 0;
     display: grid;
     grid-template-columns: 1fr;
     gap: 3%;
@@ -25,7 +25,7 @@
 }
 
 .parenthesisButton-container{
-    margin: 0px;
+    margin: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap:3%;
