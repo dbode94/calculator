@@ -1,6 +1,6 @@
 .calButton{
     border-radius: 1rem;
-    font-size: 2rem;
+    font-size: calc(14px + 0.390625vw);
     background-color: rgba($color: #25252567, $alpha: 1.0);
     color: rgba($color: #89eeb6, $alpha: 1.0);
     border: 0px;
