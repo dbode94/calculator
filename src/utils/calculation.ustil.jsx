@@ -1,21 +1,9 @@
-//Pending
-//check that it does not finishes with a operation
-//two or more operations should not be next to each other without numbers
-//parenthesis must be balanced
+//it cannot finish with an operation
 export const validFormula = (exp) =>{
     const expression = exp;
-    const operations = ['*','/','+','-'];
-
-    //Figure this one out - how to check that two numbers are surrounding all the operations and no two consecutive operations exits
-    operations.forEach( op => {
-        const splittedExpression = expression.split(op);
-        console.log(splittedExpression);
-        splittedExpression.forEach( elem =>{
-        if(elem[0] !== '(' && isNaN(elem[0])) return false;
-        if(elem[elem.length - 1] !== ')' && isNaN(elem[elem.length - 1])) return false;
-        })
-    });
-
+    const regex = /([-,+,*,/][-,+,*,/])|[-,+,*,/]$/g;
+    const found = expression.match(regex);
+    if(found != null) return false;
     return areParenthesisBalanced(expression);
 }
 
@@ -45,7 +33,7 @@ const recursiveFormulaExecution = (expression, oprationsArray) => {
 
     for(let i = 0; i < oprationsArray.length; i++)
     for(let j = 0; j < expression.length; j++){ //add another loop to iterate throught the iterations
-    if(expression[j] === oprationsArray[i][0] || expression[j] === oprationsArray[i][1]){
+    if(expression[j] === oprationsArray[i][0] || expression[j] === oprationsArray[i][1]){ 
         let numb1Ind = null,numb2Ind = null;
         let numb1 = null, numb2 = null;
         for(let z = j-1; z > -1; z--)

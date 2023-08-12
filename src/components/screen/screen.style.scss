@@ -5,8 +5,19 @@
     margin: 7% 3% 1% 3%;
     align-self: center;
     border-radius: 20px;
-    text-align: end;
-    font-size: 3rem;
-    padding-right: 3%;
-    font-family: 'Cute Font', cursive;
+    padding-right: 3%;  
+    text-align: end;     
 }
+.screen{
+    font-size: 3rem;
+    text-align: end;    
+    font-family: 'Cute Font', cursive;
+    margin: 0px;
+    overflow: hidden;
+    &.lowerFont{
+        font-size: 2rem;
+    }
+}
+
+
+

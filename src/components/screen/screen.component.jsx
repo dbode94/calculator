@@ -2,10 +2,10 @@ import "./screen.style.scss"
 import { useContext } from "react";
 import { CalculationContex } from "../../context/calculation.context";
 
-const Screen = ({formula}) =>{
+const Screen = ({formula, fontSize}) =>{
     const {currentCalculation} = useContext(CalculationContex);
     return(
-        <div className="screen-container">{currentCalculation}</div>   
+        <div className="screen-container"><p className={fontSize? `screen ${fontSize}`: `screen`}>{currentCalculation}</p></div>   
     )
 }
 
