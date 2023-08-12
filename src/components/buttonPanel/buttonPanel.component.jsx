@@ -16,6 +16,9 @@ const ButtonPanel = () =>{
         case 'c':
           setCurrentCalculation('0');
           break;
+        case '⬅':
+          //shift to the right 
+          break;
         case '=':
           if(!validFormula(currentCalculation)){
             alert('Syntax Error - Please correct syntax');
