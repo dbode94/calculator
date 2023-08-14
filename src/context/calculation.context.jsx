@@ -9,4 +9,4 @@ export const CalculationProvider = ({children}) =>{
     const [currentCalculation, setCurrentCalculation] = useState('0');
     const value = {currentCalculation,setCurrentCalculation};
     return <CalculationContex.Provider value={value}>{children}</CalculationContex.Provider>
-    }
+}

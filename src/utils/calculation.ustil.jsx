@@ -23,10 +23,13 @@ export const executeFormula = (exp) =>{
 
     let expression = exp;
     let oprationsArray = [['*','/'], ['+','-']];
-
-    return recursiveFormulaExecution(expression, oprationsArray);
+    
+    console.log(exp);
+    return eval(exp);
+    //return recursiveFormulaExecution(expression, oprationsArray);
 }
 
+// /(?<=\()([\+-\/\*]?\d+)+(?=\))  -> match expressions inside a parenthesis
 const recursiveFormulaExecution = (expression, oprationsArray) => {
 
     if(!isNaN(expression)) return expression;
@@ -59,7 +62,8 @@ const recursiveFormulaExecution = (expression, oprationsArray) => {
     }
     return expression;
 }
-    
+
+//unnecessary
 const executeOperation = (op, number1, number2) =>{
 
     let result = 0;
