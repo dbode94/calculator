@@ -2,7 +2,7 @@ import Button from "../button/button.component";
 import "./buttonPanel.style.scss"
 import { useContext } from "react";
 import { CalculationContex } from "../../context/calculation.context";
-import {validFormula,executeFormula} from '../../utils/calculation.ustil'
+import {validFormula, executeFormula, deleteLastChar, oppositeNumber} from '../../utils/calculation.ustil'
 
 
 
@@ -17,22 +17,25 @@ const ButtonPanel = () =>{
           setCurrentCalculation('0');
           break;
         case '⬅':
-          //shift to the right 
+          setCurrentCalculation(deleteLastChar(currentCalculation))
           break;
         case '=':
           if(!validFormula(currentCalculation)){
-            alert('Syntax Error - Please correct syntax');
-            break;
+              alert('Syntax Error - Please correct syntax');
+              break;
           }
           setCurrentCalculation(executeFormula(currentCalculation));
           break;
         case '+/-':
-          //converts the latest number into its oppositive number.
+          if(currentCalculation === '0') setCurrentCalculation('(-');
+          else
+            setCurrentCalculation(oppositeNumber(currentCalculation));
           break;
         default:
           if(currentCalculation === '0') setCurrentCalculation(event.target.value);
-          else setCurrentCalculation(currentCalculation + event.target.value)
-          break
+          else 
+            setCurrentCalculation(currentCalculation + event.target.value)            
+          break;
       }
     }
     return( 

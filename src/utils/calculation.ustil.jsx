@@ -86,3 +86,26 @@ const executeOperation = (op, number1, number2) =>{
     }
     return result;
 }
+
+
+export const deleteLastChar = (expression) =>{
+    return (expression.length === 1)? '0' : expression.substring(0, expression.length-1);
+}
+
+//review
+export const oppositeNumber = (expression) =>{
+    let regex = /\d+$/g
+    let found = expression.match(regex);
+    let exp;
+    if(found != null)
+        exp = expression.substring(0,expression.length - found[0].length) + '(-' + found.join('');
+    else if(expression[expression.length-1] === ')')
+        exp = expression + "*(-";
+    else {
+        regex = /[-,+,*,/]$/g;
+        found = expression.match(regex);
+        if(found != null)
+            exp = expression + '(-';
+    }
+    return exp;
+}
