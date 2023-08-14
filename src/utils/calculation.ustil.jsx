@@ -94,11 +94,15 @@ export const deleteLastChar = (expression) =>{
 
 //review
 export const oppositeNumber = (expression) =>{
-    let regex = /\d+$/g
+    let regex = /(\(-)?\d+$/g
     let found = expression.match(regex);
     let exp;
     if(found != null)
-        exp = expression.substring(0,expression.length - found[0].length) + '(-' + found.join('');
+        if(found[0].includes('(-')){
+            const number = found[0].match(/\d+$/g);
+            exp = expression.substring(0,expression.length - found[0].length) + number[0];
+        }
+        else exp = expression.substring(0,expression.length - found[0].length) + '(-' + found[0];
     else if(expression[expression.length-1] === ')')
         exp = expression + "*(-";
     else {
