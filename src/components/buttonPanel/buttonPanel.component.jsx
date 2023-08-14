@@ -33,8 +33,11 @@ const ButtonPanel = () =>{
           break;
         default:
           if(currentCalculation === '0') setCurrentCalculation(event.target.value);
-          else 
+          else if(currentCalculation[currentCalculation.length - 1] === ')')
+            setCurrentCalculation(currentCalculation + '*' +event.target.value)            
+          else
             setCurrentCalculation(currentCalculation + event.target.value)            
+            
           break;
       }
     }
