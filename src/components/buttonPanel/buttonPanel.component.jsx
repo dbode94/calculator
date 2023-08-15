@@ -1,6 +1,7 @@
 import Button from "../button/button.component";
 import "./buttonPanel.style.scss"
 import { useContext } from "react";
+import { ReactComponent as Arrow} from "../../assets/left-arrow-svgrepo-com.svg";
 import { CalculationContex } from "../../context/calculation.context";
 import {validFormula, executeFormula, deleteLastChar, oppositeNumber} from '../../utils/calculation.ustil'
 
@@ -37,7 +38,6 @@ const ButtonPanel = () =>{
             setCurrentCalculation(currentCalculation + '*' +event.target.value)            
           else
             setCurrentCalculation(currentCalculation + event.target.value)            
-            
           break;
       }
     }
@@ -56,7 +56,7 @@ const ButtonPanel = () =>{
         </div>   
         <div className="oprationButton-container">
             <Button value={'c'} key={16} buttonType={'specialButton'} onClick = {handleClick}/> 
-            <Button value={'⬅'} key={20} buttonType={'specialButton'} onClick = {handleClick}/> 
+            <Button value={'⬅'} key={20} buttonType={'specialButton'} onClick = {handleClick}><Arrow style={{pointerEvents: 'none'}}/></Button> 
             <Button value={'+'} key={12} onClick = {handleClick}/>
             <Button value={'-'} key={13} onClick = {handleClick}/> 
             <Button value={'*'} key={14} onClick = {handleClick}/> 

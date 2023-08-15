@@ -4,6 +4,7 @@
     background-color: rgba($color: #25252567, $alpha: 1.0);
     color: rgba($color: #89eeb6, $alpha: 1.0);
     border: 0px;
+    place-items: center;
     
     &:hover{
         background-color: rgba($color: #89eeb6, $alpha: 0.3);
