@@ -6,4 +6,9 @@
     flex-direction: column;
     border-radius: 15px;
     box-shadow: 5px 5px 25px black;
+
+    &.landscape{
+        width: 550px;
+        height: 350px;
+    }
 }

@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { CalculationProvider } from './context/calculation.context';
+import { OrientationProvider } from './context/orientation.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <CalculationProvider>
-      <App />
+      <OrientationProvider>
+        <App />
+      </OrientationProvider>
     </CalculationProvider>
   </React.StrictMode>
 );
