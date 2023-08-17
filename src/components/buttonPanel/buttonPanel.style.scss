@@ -11,10 +11,15 @@
     grid-template-columns: repeat(3,minmax(10px, 1fr));
     gap: 2%;
     width: 65%;
+    
+    &.landscapeButtom{
+        width: 50%;
+    }
 }
 
 .oprationButton-container{
     margin: 0;
+    margin-left: 2%;
     display: grid;
     grid-template-columns: minmax(10px, 1fr);
     gap: 3%;
@@ -26,4 +31,7 @@
     display: grid;
     grid-template-columns:repeat(2,minmax(3px,1fr));
     gap:3%;
+}
+.otherOperations-container{
+        
 }
