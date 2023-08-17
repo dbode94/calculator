@@ -1,6 +1,6 @@
 .calButton{
     border-radius: 1rem;
-    font-size: calc(17px + 0.5vw);
+    font-size: calc(17px + 0.5vh);
     background-color: rgba($color: #25252567, $alpha: 1.0);
     color: rgba($color: #89eeb6, $alpha: 1.0);
     border: 0px;
@@ -21,7 +21,7 @@
     &.specialButton{
         color: lightcoral;
 
-        @media (pointer: fine){
+        @media (pointer: fine){l
             &:hover{        
                 background-color: rgba($color: #f08080, $alpha: 0.4);
             }

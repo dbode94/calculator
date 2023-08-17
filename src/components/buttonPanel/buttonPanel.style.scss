@@ -11,8 +11,8 @@
     grid-template-columns: repeat(3,minmax(10px, 1fr));
     gap: 2%;
     width: 65%;
-    
-    &.landscapeButtom{
+
+    &.landscapeNumber-container{
         width: 50%;
     }
 }
@@ -23,7 +23,11 @@
     display: grid;
     grid-template-columns: minmax(10px, 1fr);
     gap: 3%;
-    width: 30%;
+    width: 25%;
+    
+    &.landscapeOperation-container{
+        
+    }
 }
 
 .parenthesisButton-container{
@@ -33,5 +37,10 @@
     gap:3%;
 }
 .otherOperations-container{
-        
+    margin: 0;
+    margin-right: 2%;
+    display: grid;
+    grid-template-columns: minmax(10px, 1fr);
+    gap: 3%;
+    width: 15%;
 }

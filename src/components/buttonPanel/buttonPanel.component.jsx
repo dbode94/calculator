@@ -53,7 +53,7 @@ const ButtonPanel = () =>{
           <Button value={'-'} key={13} onClick = {handleClick}/> 
         </div> : null
       }
-      <div className={portrait? "numberButton-container": "numberButton-container landscapeButtom"}>
+      <div className={portrait? "numberButton-container": "numberButton-container landscapeNumber-containe"}>
         {
           Array.from(Array(9)).map((_,i) =>{
             return <Button value={i+1} key={i+1} onClick = {handleClick}/>
