@@ -2,6 +2,8 @@ import Button from "../button/button.component";
 import "./buttonPanel.style.scss"
 import { useContext } from "react";
 import { ReactComponent as Arrow} from "../../assets/left-arrow-svgrepo-com.svg";
+import { ReactComponent as Square} from "../../assets/superscript-x-elevated-to-the-power-of-two-svgrepo-com.svg";
+
 import { CalculationContex } from "../../context/calculation.context";
 import {validFormula, executeFormula, deleteLastChar, oppositeNumber} from '../../utils/calculation.ustil'
 import { OrientationContext } from "../../context/orientation.context";
@@ -11,31 +13,70 @@ import { OrientationContext } from "../../context/orientation.context";
 
 const ButtonPanel = () =>{
   const {portrait} = useContext(OrientationContext)
-  const {currentCalculation,setCurrentCalculation} = useContext(CalculationContex);
+  const {currentCalculation,setCurrentCalculation, isResult, setIsResult} = useContext(CalculationContex);
   
   const handleClick = (event) => {
 
     switch(event.target.value){
+      
       case 'c':
+        setIsResult(true);
         setCurrentCalculation('0');
         break;
+
       case '⬅':
         setCurrentCalculation(deleteLastChar(currentCalculation))
         break;
+
       case '=':
         if(!validFormula(currentCalculation)){
           alert('Syntax Error - Please correct syntax');
           break;
         }
+        setIsResult(true);
         setCurrentCalculation(executeFormula(currentCalculation));
         break;
+
       case '+/-':
         if(currentCalculation === '0') setCurrentCalculation('(-');
         else
           setCurrentCalculation(oppositeNumber(currentCalculation));
         break;
+
+      case '√':
+        console.log(isResult)
+        if((!isNaN(currentCalculation[currentCalculation.length - 1]) || currentCalculation[currentCalculation.length - 1] === ')') && !isResult)
+          setCurrentCalculation(currentCalculation + '*' + event.target.value + '(');
+        else if(isResult){
+          setCurrentCalculation(event.target.value + '(');    
+          setIsResult(false)
+        }    
+        else setCurrentCalculation(currentCalculation + event.target.value + '(');
+        break;
+
+      case 'x^y':
+        if(!isNaN(currentCalculation[currentCalculation.length - 1]) && !isResult)
+          setCurrentCalculation(currentCalculation+ '^(');
+        else alert('wrong syntax');
+        break;
+
+      case 'square':
+        if(!isNaN(currentCalculation[currentCalculation.length - 1]) && !isResult)
+          setCurrentCalculation(currentCalculation+ '^(2)');
+        else alert('wrong syntax');
+        break;
+
+      case '|x|':
+        if(!isNaN(currentCalculation[currentCalculation.length - 1]) && !isResult)
+          setCurrentCalculation(currentCalculation+ '*abs(');
+        else alert('wrong syntax');
+        break;
+
       default:
-        if(currentCalculation === '0') setCurrentCalculation(event.target.value);
+        if(currentCalculation === '0' || isResult) {
+          setIsResult(false)
+          setCurrentCalculation(event.target.value);
+        }
         else if(currentCalculation[currentCalculation.length - 1] === ')')
           setCurrentCalculation(currentCalculation + '*' +event.target.value)            
         else
@@ -47,10 +88,11 @@ const ButtonPanel = () =>{
     <div className="buttonPanel-container">
       {
         !portrait? <div className="otherOperations-container">
-          <Button value={'√'} key={16} onClick = {handleClick}/> 
-          <Button value={'⬅'} key={20} buttonType={'specialButton'} onClick = {handleClick}/>
-          <Button value={'+'} key={12} onClick = {handleClick}/>
-          <Button value={'-'} key={13} onClick = {handleClick}/> 
+          <Button value={'√'} key={21} onClick = {handleClick}/> 
+          <Button value={'x^y'} key={22} onClick = {handleClick}/>
+          <Button value={'square'} key={23} buttonType={'specialButton'} onClick = {handleClick}><Square style={{pointerEvents: 'none'}}/></Button> 
+          <Button value={'|x|'} key={24} onClick = {handleClick}/>
+          <Button value={'log'} key={25} onClick = {handleClick}/> 
         </div> : null
       }
       <div className={portrait? "numberButton-container": "numberButton-container landscapeNumber-containe"}>
@@ -63,7 +105,7 @@ const ButtonPanel = () =>{
         <Button value={0} key={0} onClick = {handleClick}/>
         <Button value={'.'} key={11} onClick = {handleClick}/>
       </div>   
-      <div className="oprationButton-container">
+      <div className={portrait? "oprationButton-container" : "oprationButton-container landscapeOperation-container"}>
           <Button value={'c'} key={16} buttonType={'specialButton'} onClick = {handleClick}/> 
           <Button value={'⬅'} key={20} buttonType={'specialButton'} onClick = {handleClick}><Arrow style={{pointerEvents: 'none'}}/></Button> 
           <Button value={'+'} key={12} onClick = {handleClick}/>
