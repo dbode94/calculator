@@ -10,7 +10,7 @@ import { OrientationContext } from "../../context/orientation.context";
 
 
 
-
+//I do not like it - Highly chance it will be refactored
 const ButtonPanel = () =>{
   const {portrait} = useContext(OrientationContext)
   const {currentCalculation,setCurrentCalculation, isResult, setIsResult} = useContext(CalculationContex);
@@ -58,26 +58,38 @@ const ButtonPanel = () =>{
         if(!isNaN(currentCalculation[currentCalculation.length - 1]) && !isResult)
           setCurrentCalculation(currentCalculation+ '^(');
         else alert('wrong syntax');
+        setIsResult(false);
         break;
 
       case 'square':
         if(!isNaN(currentCalculation[currentCalculation.length - 1]) && !isResult)
           setCurrentCalculation(currentCalculation+ '^(2)');
         else alert('wrong syntax');
+        setIsResult(false);
         break;
 
       case '|x|':
-        if(!isNaN(currentCalculation[currentCalculation.length - 1]) && !isResult)
-          setCurrentCalculation(currentCalculation+ '*abs(');
-        else alert('wrong syntax');
+        setIsResult(false);
+        if(isResult)
+          setCurrentCalculation('abs(');
+        else setCurrentCalculation(currentCalculation + "*abs(");
+        break;
+      
+      case 'log':
+        setIsResult(false);
+        if(isResult)
+          setCurrentCalculation('log(');
+        else setCurrentCalculation(currentCalculation + "*log(");
         break;
 
       default:
         if(currentCalculation === '0' || isResult) {
           setIsResult(false)
-          setCurrentCalculation(event.target.value);
+          if(event.target.value === '.')
+          setCurrentCalculation(currentCalculation + event.target.value);
+          else setCurrentCalculation(event.target.value);
         }
-        else if(currentCalculation[currentCalculation.length - 1] === ')')
+        else if(currentCalculation[currentCalculation.length - 1] === ')' && [0,1,2,3,4,5,6,7,8,9].includes(Number(event.target.value)))
           setCurrentCalculation(currentCalculation + '*' +event.target.value)            
         else
           setCurrentCalculation(currentCalculation + event.target.value)            
