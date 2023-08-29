@@ -9,7 +9,6 @@ import {validFormula, executeFormula, deleteLastChar, oppositeNumber} from '../.
 import { OrientationContext } from "../../context/orientation.context";
 
 
-
 //I do not like it - Highly chance it will be refactored
 const ButtonPanel = () =>{
   const {portrait} = useContext(OrientationContext)
@@ -37,6 +36,18 @@ const ButtonPanel = () =>{
         setCurrentCalculation(executeFormula(currentCalculation));
         break;
 
+      case '(':
+        if(!isNaN(currentCalculation[currentCalculation.length - 1]) && !isResult)
+          setCurrentCalculation(currentCalculation + '*(');
+        else if(isNaN(currentCalculation[currentCalculation.length - 1]))
+          setCurrentCalculation(currentCalculation + '(');
+        else if(isResult){
+          setCurrentCalculation('(');
+          setIsResult(false);
+        }          
+        else alert('wrong syntax');
+        break
+
       case '+/-':
         if(currentCalculation === '0') setCurrentCalculation('(-');
         else
@@ -54,15 +65,15 @@ const ButtonPanel = () =>{
         else setCurrentCalculation(currentCalculation + event.target.value + '(');
         break;
 
-      case 'x^y':
-        if(!isNaN(currentCalculation[currentCalculation.length - 1]) && !isResult)
+      case 'x^y': 
+        if((!isNaN(currentCalculation[currentCalculation.length - 1]) && !isResult ) || currentCalculation[currentCalculation.length -1] === ')')
           setCurrentCalculation(currentCalculation+ '^(');
         else alert('wrong syntax');
         setIsResult(false);
         break;
 
       case 'square':
-        if(!isNaN(currentCalculation[currentCalculation.length - 1]) && !isResult)
+        if((!isNaN(currentCalculation[currentCalculation.length - 1]) && !isResult ) || currentCalculation[currentCalculation.length -1] === ')')
           setCurrentCalculation(currentCalculation+ '^(2)');
         else alert('wrong syntax');
         setIsResult(false);
@@ -72,14 +83,16 @@ const ButtonPanel = () =>{
         setIsResult(false);
         if(isResult)
           setCurrentCalculation('abs(');
-        else setCurrentCalculation(currentCalculation + "*abs(");
+        else if(!isNaN(currentCalculation[currentCalculation.length - 1]) || currentCalculation[currentCalculation.length - 1] === ')')setCurrentCalculation(currentCalculation + "*abs(");
+        else setCurrentCalculation(currentCalculation + "abs(");
         break;
       
       case 'log':
         setIsResult(false);
         if(isResult)
           setCurrentCalculation('log(');
-        else setCurrentCalculation(currentCalculation + "*log(");
+        else if(!isNaN(currentCalculation[currentCalculation.length - 1]) || currentCalculation[currentCalculation.length - 1] === ')') setCurrentCalculation(currentCalculation + "*log(");
+        else setCurrentCalculation(currentCalculation + "log(");
         break;
 
       default:
