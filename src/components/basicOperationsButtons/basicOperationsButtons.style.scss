@@ -1,0 +1,19 @@
+.oprationButton-container{
+    margin: 0;
+    margin-left: 2%;
+    display: grid;
+    grid-template-columns: minmax(10px, 1fr);
+    gap: 3%;
+    width: 25%;
+    
+    &.landscapeOperation-container{
+        width: 15%;
+    }
+}
+
+.parenthesisButton-container{
+    margin: 0;
+    display: grid;
+    grid-template-columns:repeat(2,minmax(3px,1fr));
+    gap:3%;
+}

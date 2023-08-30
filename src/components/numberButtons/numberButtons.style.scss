@@ -1,0 +1,10 @@
+.numberButton-container{
+    display: grid;
+    grid-template-columns: repeat(3,minmax(10px, 1fr));
+    gap: 2%;
+    width: 65%;
+
+    &.landscapeNumber-container{
+        width: 50%;
+    }
+}
