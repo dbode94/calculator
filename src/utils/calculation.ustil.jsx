@@ -1,7 +1,7 @@
 //it cannot finish with an operation
 export const validFormula = (exp) =>{
     let expression = exp;
-    const regex = /([-,+,*,/][-,+,*,/])|[-,+,*,/]$/g;
+    const regex = /(log\([*,/])|(abs\([*,/])|(√\([*,/])|([-,+,*,/][-,+,*,/])|[-,+,*,/]$/g;
     const found = expression.match(regex);
     if(found != null) return false;
     return areParenthesisBalanced(expression);
