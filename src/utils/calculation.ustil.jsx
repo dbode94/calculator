@@ -41,12 +41,12 @@ export const executeFormula = (exp) => {
                 }
                 else{
                     parenthesisCount = -1;
-                   j=j-1;
-                   while(parenthesisCount < 0) {
+                    j = j - 1;
+                    while(parenthesisCount < 0) {
                         if(auxExpression[j] === '(') parenthesisCount++;
                         else if(auxExpression[j] === ')') parenthesisCount--;
                         j--;
-                   }
+                    }
                 }
 
                 parenthesisCount = 1;
@@ -60,7 +60,7 @@ export const executeFormula = (exp) => {
 
                 let prefix = auxExpression.substring(0,j+1);
                 let sufix = auxExpression.substring(z+1,auxExpression.length);
-                auxExpression = prefix + 'Math.pow(' + auxExpression.substring(j,i) + ',' + auxExpression.substring(i+1,z+1) + ')' + sufix; 
+                auxExpression = prefix + 'Math.pow(' + auxExpression.substring(j+1,i) + ',' + auxExpression.substring(i+1,z+1) + ')' + sufix; 
                 break;
             
             case 'a':
@@ -78,7 +78,7 @@ export const executeFormula = (exp) => {
             default:               
                 break;
         }
-
+    console.log(auxExpression);
     return eval(auxExpression).toString();
 };
 

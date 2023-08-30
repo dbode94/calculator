@@ -1,8 +1,5 @@
-import Button from "../button/button.component";
 import "./buttonPanel.style.scss"
 import { useContext } from "react";
-//import { ReactComponent as Arrow} from "../../assets/left-arrow-svgrepo-com.svg";
-//import { ReactComponent as Square} from "../../assets/superscript-x-elevated-to-the-power-of-two-svgrepo-com.svg";
 import AdvancedOperationsButtons from "../advancedOperationsButtons/advancedOpertaionsButtons.component";
 import NumberButtons from "../numberButtons/numberButtons.component";
 import BasicOprationsButtons from "../basicOperationsButtons/basicOprationsButtons.component";
