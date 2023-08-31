@@ -9,7 +9,7 @@ import {validFormula, executeFormula, deleteLastChar, oppositeNumber} from '../.
 import { OrientationContext } from "../../context/orientation.context";
 
 
-//I do not like it - Highly chance it will be refactored
+//Refactoring needed
 const ButtonPanel = () =>{
   const {portrait} = useContext(OrientationContext)
   const {currentCalculation,setCurrentCalculation, isResult, setIsResult} = useContext(CalculationContex);
@@ -37,39 +37,47 @@ const ButtonPanel = () =>{
         break;
 
       case '(':
-        if(!isNaN(currentCalculation[currentCalculation.length - 1]) && !isResult)
-          setCurrentCalculation(currentCalculation + '*(');
-        else if(isNaN(currentCalculation[currentCalculation.length - 1]))
-          setCurrentCalculation(currentCalculation + '(');
-        else if(isResult){
-          setCurrentCalculation('(');
-          setIsResult(false);
-        }          
-        else alert('wrong syntax');
+        if(currentCalculation.length < 56){
+          if(!isNaN(currentCalculation[currentCalculation.length - 1]) && !isResult)
+            setCurrentCalculation(currentCalculation + '*(');
+          else if(isNaN(currentCalculation[currentCalculation.length - 1]))
+            setCurrentCalculation(currentCalculation + '(');
+          else if(isResult){
+            setCurrentCalculation('(');
+            setIsResult(false);
+          }          
+          else alert('wrong syntax');
+        }
         break
 
       case '+/-':
-        if(currentCalculation === '0') setCurrentCalculation('(-');
-        else
-          setCurrentCalculation(oppositeNumber(currentCalculation));
+        if(currentCalculation.length < 56){
+          if(currentCalculation === '0') setCurrentCalculation('(-');
+          else
+            setCurrentCalculation(oppositeNumber(currentCalculation));
+        }
         break;
 
       case '√':
-        console.log(isResult)
-        if((!isNaN(currentCalculation[currentCalculation.length - 1]) || currentCalculation[currentCalculation.length - 1] === ')') && !isResult)
-          setCurrentCalculation(currentCalculation + '*' + event.target.value + '(');
-        else if(isResult){
-          setCurrentCalculation(event.target.value + '(');    
-          setIsResult(false)
-        }    
-        else setCurrentCalculation(currentCalculation + event.target.value + '(');
+        if(currentCalculation.length < 56){
+          console.log(isResult)
+          if((!isNaN(currentCalculation[currentCalculation.length - 1]) || currentCalculation[currentCalculation.length - 1] === ')') && !isResult)
+            setCurrentCalculation(currentCalculation + '*' + event.target.value + '(');
+          else if(isResult){
+            setCurrentCalculation(event.target.value + '(');    
+            setIsResult(false)
+          }    
+          else setCurrentCalculation(currentCalculation + event.target.value + '(');
+        }
         break;
 
-      case 'x^y': 
-        if((!isNaN(currentCalculation[currentCalculation.length - 1]) && !isResult ) || currentCalculation[currentCalculation.length -1] === ')')
-          setCurrentCalculation(currentCalculation+ '^(');
-        else alert('wrong syntax');
-        setIsResult(false);
+      case 'x^y':
+        if(currentCalculation.length < 56){
+          if((!isNaN(currentCalculation[currentCalculation.length - 1]) && !isResult ) || currentCalculation[currentCalculation.length -1] === ')')
+            setCurrentCalculation(currentCalculation+ '^(');
+          else alert('wrong syntax');
+          setIsResult(false);
+        }
         break;
 
       case 'square':
@@ -80,31 +88,37 @@ const ButtonPanel = () =>{
         break;
 
       case '|x|':
-        setIsResult(false);
-        if(isResult)
-          setCurrentCalculation('abs(');
-        else if(!isNaN(currentCalculation[currentCalculation.length - 1]) || currentCalculation[currentCalculation.length - 1] === ')')setCurrentCalculation(currentCalculation + "*abs(");
-        else setCurrentCalculation(currentCalculation + "abs(");
+        if(currentCalculation.length < 56){
+          setIsResult(false);
+          if(isResult)
+            setCurrentCalculation('abs(');
+          else if(!isNaN(currentCalculation[currentCalculation.length - 1]) || currentCalculation[currentCalculation.length - 1] === ')')setCurrentCalculation(currentCalculation + "*abs(");
+          else setCurrentCalculation(currentCalculation + "abs(");
+        } 
         break;
       
       case 'log':
-        setIsResult(false);
-        if(isResult)
-          setCurrentCalculation('log(');
-        else if(!isNaN(currentCalculation[currentCalculation.length - 1]) || currentCalculation[currentCalculation.length - 1] === ')') setCurrentCalculation(currentCalculation + "*log(");
-        else setCurrentCalculation(currentCalculation + "log(");
+        if(currentCalculation.length < 56){
+          setIsResult(false);
+          if(isResult)
+            setCurrentCalculation('log(');
+          else if(!isNaN(currentCalculation[currentCalculation.length - 1]) || currentCalculation[currentCalculation.length - 1] === ')') setCurrentCalculation(currentCalculation + "*log(");
+          else setCurrentCalculation(currentCalculation + "log(");
+        }
         break;
 
       default:
-        if(currentCalculation === '0' || isResult) {
-          setIsResult(false)
-          if(event.target.value === '.')
-          setCurrentCalculation(currentCalculation + event.target.value);
-          else setCurrentCalculation(event.target.value);
+        if(currentCalculation.length < 56){
+          if(currentCalculation === '0' || isResult) {
+            setIsResult(false)
+            if(event.target.value === '.')
+            setCurrentCalculation(currentCalculation + event.target.value);
+            else setCurrentCalculation(event.target.value);
+          }
+          else if(currentCalculation[currentCalculation.length - 1] === ')' && [0,1,2,3,4,5,6,7,8,9].includes(Number(event.target.value)))
+            setCurrentCalculation(currentCalculation + '*' +event.target.value)            
+          else setCurrentCalculation(currentCalculation + event.target.value)            
         }
-        else if(currentCalculation[currentCalculation.length - 1] === ')' && [0,1,2,3,4,5,6,7,8,9].includes(Number(event.target.value)))
-          setCurrentCalculation(currentCalculation + '*' +event.target.value)            
-        else setCurrentCalculation(currentCalculation + event.target.value)            
         break;
     }
   }
