@@ -9,6 +9,12 @@
 
     &.landscape{
         width: 550px;
-        height: 350px;
+        height: 355px;
+    }
+
+    @media (pointer: fine){
+        &.landscape{
+            height: 370px;
+        }
     }
 }

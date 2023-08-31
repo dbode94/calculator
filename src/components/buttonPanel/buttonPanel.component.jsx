@@ -3,7 +3,6 @@ import { useContext } from "react";
 import AdvancedOperationsButtons from "../advancedOperationsButtons/advancedOpertaionsButtons.component";
 import NumberButtons from "../numberButtons/numberButtons.component";
 import BasicOprationsButtons from "../basicOperationsButtons/basicOprationsButtons.component";
-
 import { CalculationContex } from "../../context/calculation.context";
 import {validFormula, executeFormula, deleteLastChar, oppositeNumber} from '../../utils/calculation.ustil'
 import { OrientationContext } from "../../context/orientation.context";
@@ -11,7 +10,7 @@ import { OrientationContext } from "../../context/orientation.context";
 
 //Refactoring needed
 const ButtonPanel = () =>{
-  const {portrait} = useContext(OrientationContext)
+  const {portrait, setPortrait} = useContext(OrientationContext)
   const {currentCalculation,setCurrentCalculation, isResult, setIsResult} = useContext(CalculationContex);
   
   const handleClick = (event) => {
@@ -122,6 +121,7 @@ const ButtonPanel = () =>{
         break;
     }
   }
+
   return( 
     <div className="buttonPanel-container">
       {
